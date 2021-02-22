@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import json
+import os, os.path
 
 def index(request):
     context = {'title': 'GeekShop'}
@@ -7,12 +8,18 @@ def index(request):
 
 
 def products(request):
+
+    slides_dir = './static/vendor/img/slides/'
+    slides = os.listdir(slides_dir)
+    slides = [os.path.join(slides_dir[9:], slide) for slide in slides]
+
     with open('mainapp/fixtures/products.json') as db:
         data = json.load(db)
 
     context = {'title': 'GeekShop - каталог',
                'topics': ('Новинки', 'Одежда', 'Обувь', 'Аксессуары', 'Подарки'),
-               'sliders': {'number': 3},
+               'slides': slides,
                'data': data,
                }
     return render(request, 'mainapp/products.html', context)
+
