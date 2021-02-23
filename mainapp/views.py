@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import json
 import os, os.path
+from geekshop.settings import STATIC_URL
 
 def index(request):
     context = {'title': 'GeekShop'}
@@ -8,10 +9,9 @@ def index(request):
 
 
 def products(request):
-
-    slides_dir = './static/vendor/img/slides/'
+    slides_dir = os.path.join(STATIC_URL[1:], 'vendor/img/slides/')
     slides = os.listdir(slides_dir)
-    slides = [os.path.join(slides_dir[9:], slide) for slide in slides]
+    slides = [os.path.join(slides_dir, slide) for slide in slides]
 
     with open('mainapp/fixtures/products.json') as db:
         data = json.load(db)
