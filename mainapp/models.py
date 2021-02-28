@@ -6,6 +6,9 @@ class ProductsCategory(models.Model):
                             verbose_name='Название')
     description = models.TextField(blank=True, verbose_name='Описание')
 
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     name = models.CharField(max_length=256, verbose_name='Название')
@@ -20,3 +23,6 @@ class Product(models.Model):
                               verbose_name='Фото')
     category = models.ForeignKey(ProductsCategory, on_delete=models.CASCADE,
                                  verbose_name='Категория')
+
+    def __str__(self):
+        return f'{self.name} | {self.category.name}'
