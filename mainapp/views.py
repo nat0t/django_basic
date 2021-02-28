@@ -17,7 +17,8 @@ def products(request):
         data = json.load(db)
 
     context = {'title': 'GeekShop - каталог',
-               'topics': ('Новинки', 'Одежда', 'Обувь', 'Аксессуары', 'Подарки'),
+               'topics': ('Новинки', 'Одежда', 'Обувь', 'Аксессуары',
+                          'Подарки'),
                'slides': slides,
                'data': data,
                }
