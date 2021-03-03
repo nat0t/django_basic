@@ -37,7 +37,7 @@
                 </li>
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="auth/profile.html">{{ user }}
+                        <a class="nav-link" href="auth/profile.html">{{ user.username }}
                             <i class="fas fa-user-circle"></i>
                         </a>
                     </li>
@@ -49,8 +49,6 @@
                         <a class="nav-link" href="{% url 'auth:login' %}">Войти <i class="fas fa-sign-in-alt"></i></a>
                     </li>
                 {% endif %}
-
-
             </ul>
         </div>
     </div>
