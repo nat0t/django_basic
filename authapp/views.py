@@ -38,7 +38,8 @@ def logout(request):
 
 def profile(request):
     if request.method == 'POST':
-        form = UserProfileForm(data=request.POST, instance=request.user)
+        form = UserProfileForm(request.POST, request.FILES,
+                               instance=request.user)
         if form.is_valid:
             form.save()
             return HttpResponseRedirect(reverse('auth:profile'))
