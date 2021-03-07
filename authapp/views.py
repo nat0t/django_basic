@@ -42,6 +42,7 @@ def profile(request):
                                instance=request.user)
         if form.is_valid:
             form.save()
+            messages.success(request, 'Профиль успешно изменён.')
             return HttpResponseRedirect(reverse('auth:profile'))
     else:
         form = UserProfileForm(instance=request.user)
