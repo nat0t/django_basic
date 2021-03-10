@@ -46,15 +46,7 @@ def profile(request):
             return HttpResponseRedirect(reverse('auth:profile'))
     else:
         form = UserProfileForm(instance=request.user)
-
-    baskets = Basket.objects.filter(user=request.user)
-    total_quantity = sum(basket.quantity for basket in baskets)
-    total_price = sum(
-        basket.quantity * basket.product.price for basket in baskets)
-
     context = {'form': form,
-               'baskets': baskets,
-               'total_quantity': total_quantity,
-               'total_price': total_price,
+               'baskets': Basket.objects.filter(user=request.user),
                }
     return render(request, 'authapp/profile.html', context)
