@@ -32,18 +32,18 @@ class ProductAdminCreationForm(ModelForm):
         fields = ('name', 'short_description', 'image' ,'price',
                   'quantity','category')
 
-        def __init__(self, *args, **kwargs):
-            super(ProductAdminCreationForm, self).__init__(*args, **kwargs)
-            self.fields['name'].widget.attrs[
-                'placeholder'] = 'Введите название продукта'
-            self.fields['short_description'].widget.attrs[
-                'placeholder'] = 'Введите описание'
-            self.fields['price'].widget.attrs[
-                'placeholder'] = 'Введите цену'
-            self.fields['quantity'].widget.attrs[
-                'placeholder'] = 'Введите количество'
-            self.fields['category'].widget.attrs[
-                'placeholder'] = 'Введите категорию'
-            for field_name, field in self.fields.items():
-                field.widget.attrs['class'] = 'form-control py-4'
-            self.fields['image'].widget.attrs['class'] = 'custom-file-input'
+    def __init__(self, *args, **kwargs):
+        super(ProductAdminCreationForm, self).__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs[
+            'placeholder'] = 'Введите название продукта'
+        self.fields['short_description'].widget.attrs[
+            'placeholder'] = 'Введите описание'
+        self.fields['price'].widget.attrs[
+            'placeholder'] = 'Введите цену'
+        self.fields['quantity'].widget.attrs[
+            'placeholder'] = 'Введите количество'
+        self.fields['category'].widget.attrs[
+            'placeholder'] = 'Введите категорию'
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control py-4'
+        self.fields['image'].widget.attrs['class'] = 'custom-file-input'
