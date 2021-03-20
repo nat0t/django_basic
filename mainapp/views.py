@@ -12,7 +12,7 @@ def index(request):
     return render(request, 'mainapp/index.html', context)
 
 
-def products(request, category_id=None):
+def products(request, category_id=None, page=1):
     slides = os.listdir(os.path.join(STATIC_URL[1:], 'vendor/img/slides/'))
 
     context = {'title': 'GeekShop - каталог',
@@ -20,9 +20,11 @@ def products(request, category_id=None):
                'categories': ProductsCategory.objects.all(),
                }
     if category_id:
-        context.update(
-            {'products': Product.objects.filter(category_id=category_id)}
-        )
+        products_list = Product.objects.filter(
+            category_id=category_id).order_by('price')
     else:
-        context.update({'products': Product.objects.all()})
+        products_list = Product.objects.all().order_by('price')
+    paginator = Paginator(products_list, 3)
+    products_paginator = paginator.page(page)
+    context.update({'products': products_paginator})
     return render(request, 'mainapp/products.html', context)
