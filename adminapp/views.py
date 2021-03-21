@@ -30,13 +30,13 @@ class UserUpdateView(UpdateView):
     model = User
     template_name = 'adminapp/admin-users-update-delete.html'
     form_class = UserAdminProfileForm
-    success_url = reverse_lazy('admin-staff:admin_users')
+    success_url = reverse_lazy('admin_staff:admin_users')
 
 # DELETE
 class UserDeleteView(DeleteView):
     model = User
     template_name = 'adminapp/admin-users-update-delete.html'
-    success_url = reverse_lazy('admin-staff:admin_users')
+    success_url = reverse_lazy('admin_staff:admin_users')
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
