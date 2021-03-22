@@ -6,26 +6,6 @@
 {% endblock %}
 
 {% block content %}
-    {% if messages or form.non_field_errors %}
-        <div class="alert
-            {% if messages %} alert-success {% else %} alert-danger {% endif %}
-            alert-dismissible fade show" role="alert"
-             style="margin-top: 50px;">
-            {% if messages %}
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-            {% else %}
-                {% for error in form.non_field_errors %}
-                    {{ error }}
-                {% endfor %}
-            {% endif %}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    {% endif %}
     <div class="container">
         <div class="row">
             <div class="col-lg-7">
